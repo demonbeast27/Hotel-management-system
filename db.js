@@ -10,9 +10,12 @@ const { createClient } = require('@libsql/client');
 const path = require('path');
 
 // Allow tests to use an in-memory DB via env var.
-const dbUrl = process.env.DB_PATH === ':memory:'
-  ? ':memory:'
-  : `file:${path.join(__dirname, 'hotel.db')}`;
+let dbUrl = `file:${path.join(__dirname, 'hotel.db')}`;
+if (process.env.DB_PATH === ':memory:') {
+  dbUrl = ':memory:';
+} else if (process.env.VERCEL) {
+  dbUrl = 'file:/tmp/hotel.db'; // Vercel has read-only fs except for /tmp
+}
 
 const db = createClient({ url: dbUrl });
 

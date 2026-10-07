@@ -19,6 +19,20 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// ── Vercel DB Init ────────────────────────────────────────────────────────────
+let isDbInitialized = false;
+app.use(async (req, res, next) => {
+  if (!isDbInitialized && process.env.VERCEL) {
+    try {
+      await init();
+      isDbInitialized = true;
+    } catch (err) {
+      console.error('DB Init Error:', err);
+    }
+  }
+  next();
+});
+
 // ── API Routes ────────────────────────────────────────────────────────────────
 app.use('/api/rooms',    roomsRouter);
 app.use('/api/bookings', bookingsRouter);
@@ -39,7 +53,7 @@ async function start() {
   });
 }
 
-// Only auto-start when run directly (not when required by tests)
+// Only auto-start when run directly (not when required by Vercel or tests)
 if (require.main === module) {
   start().catch(err => {
     console.error('Failed to start server:', err);
@@ -47,4 +61,5 @@ if (require.main === module) {
   });
 }
 
-module.exports = { app, start };
+// Export for Vercel / serverless
+module.exports = app;

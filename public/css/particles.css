@@ -1,0 +1,181 @@
+/* =============================================================================
+   particles.css — Hero & Particles Component Styling
+   Matches LuxStay Luxury Navy + Gold Hospitality Theme
+   Responsive: 360px to 1440px (zero horizontal scroll)
+   ============================================================================= */
+
+/* ── Hero Section Layout ─────────────────────────────────────────────────────── */
+.hero-section {
+  position: relative;
+  width: 100%;
+  min-height: 480px;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 20%, #1e3a8a 0%, #0f172a 75%, #080d1a 100%);
+  border-bottom: 2px solid rgba(197, 160, 89, 0.3);
+  padding: 3.5rem 1.25rem 4rem;
+  box-sizing: border-box;
+}
+
+/* ── Particles Canvas Layer (Behind Hero Content, z-index: 0) ────────────────── */
+.particles-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.particles-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  display: block;
+}
+
+/* ── Hero Foreground Content (Clickable, z-index: 2) ────────────────────────── */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1060px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 2rem;
+  box-sizing: border-box;
+}
+
+/* ── Typography & Badge ──────────────────────────────────────────────────────── */
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  max-width: 820px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fef08a;
+  background: rgba(161, 98, 7, 0.25);
+  border: 1px solid rgba(202, 138, 4, 0.45);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.hero-badge svg {
+  color: #eab308;
+  flex-shrink: 0;
+}
+
+.hero-title {
+  font-family: var(--font-heading, 'Playfair Display SC', Georgia, serif);
+  font-size: clamp(2rem, 4.2vw, 3.25rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+  margin: 0;
+  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
+}
+
+.hero-subtitle {
+  font-family: var(--font-body, 'Karla', sans-serif);
+  font-size: clamp(0.95rem, 1.8vw, 1.125rem);
+  color: #cbd5e1;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 640px;
+}
+
+/* ── Hero Search Availability Card ─────────────────────────────────────────── */
+.hero-search-card {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 940px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: var(--radius-lg, 1rem);
+  padding: 1.75rem 2rem;
+  border: 1px solid rgba(191, 219, 254, 0.65);
+  box-shadow: 0 20px 40px -12px rgba(15, 23, 42, 0.4), 0 0 0 1px rgba(197, 160, 89, 0.25);
+  color: var(--color-text, #0f172a);
+  text-align: left;
+  box-sizing: border-box;
+}
+
+.hero-search-header {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--color-border, #bfdbfe);
+}
+
+.hero-search-header svg {
+  color: var(--color-primary, #1e3a8a);
+  flex-shrink: 0;
+}
+
+.hero-search-header h2 {
+  font-family: var(--font-heading, 'Playfair Display SC', Georgia, serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-primary-dark, #1e2f6a);
+  margin: 0;
+}
+
+/* ── Responsive Refinements (360px – 1440px) ─────────────────────────────────── */
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: auto;
+    padding: 2.5rem 1rem 3rem;
+  }
+
+  .hero-search-card {
+    padding: 1.25rem 1rem;
+    border-radius: var(--radius-md, 0.75rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 1.75rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .hero-badge {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.75rem;
+  }
+}
+
+/* ── Accessibility: Reduced Motion ───────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .hero-badge,
+  .hero-search-card {
+    transition: none !important;
+    animation: none !important;
+  }
+}

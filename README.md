@@ -1,5 +1,7 @@
 # LuxStay Hotel — Room Booking System
 
+live link to vercel:
+
 A full-stack Hotel Room Booking System built as a college mini project.
 
 **Stack:** Node.js · Express.js · SQLite (better-sqlite3) · Vanilla HTML/CSS/JS

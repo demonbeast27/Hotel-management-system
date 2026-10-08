@@ -1,6 +1,6 @@
 # LuxStay Hotel — Room Booking System
 
-live link to vercel:
+live link to vercel:https://hotel-management-system-phi-blond.vercel.app/
 
 A full-stack Hotel Room Booking System built as a college mini project.
 
